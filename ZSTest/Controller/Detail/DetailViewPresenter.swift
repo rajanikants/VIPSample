@@ -10,7 +10,8 @@ import Foundation
 
 class DetailViewPresenterImplementation: DetailViewPresenter {
     
-    let outPut: DetailViewOutput
+    unowned let outPut: DetailViewOutput
+    
     init(outPut: DetailViewOutput) {
         self.outPut = outPut
     }

@@ -32,12 +32,12 @@ class WeatherTableCell: UITableViewCell {
 
     
     private lazy var containerStack: UIStackView = {
-        let stackView = UIStackView.init(arrangedSubviews: [cityAndTempView,
+        let stackView = UIStackView(arrangedSubviews: [cityAndTempView,
                                                             windDetailView,
                                                             pressureDetailView,
                                                             humidityDetailView])
         stackView.alignment = .leading
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.axis = .vertical
         return stackView
     }()
@@ -66,10 +66,10 @@ private extension WeatherTableCell {
     func setupConstraints() {
         containerStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            containerStack.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            containerStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            containerStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            containerStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+            containerStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            containerStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            containerStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            containerStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
         ])
     }
 }

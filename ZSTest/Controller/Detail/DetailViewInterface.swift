@@ -16,7 +16,7 @@ protocol DetailViewPresenter {
     func showWeatherInfo(detail: [WeatherDetail])
 }
 
-protocol DetailViewOutput {
+protocol DetailViewOutput: class {
     func presentWeatherDetail(list: [WeatherDetail])
     func errorOnAPI()
 }

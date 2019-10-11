@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DetailView: UIView {
+class DetailView: UIStackView {
     
-    private let headerLabel: UILabel = {
+    private lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .black
@@ -18,7 +18,7 @@ class DetailView: UIView {
         return label
     }()
     
-    private let detailLabel: UILabel = {
+    private lazy var detailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.numberOfLines = 0
@@ -27,47 +27,30 @@ class DetailView: UIView {
         return label
     }()
     
-    private let containerStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .leading
-        stackView.distribution = .fillProportionally
-        stackView.axis = .horizontal
-        return stackView
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        commonInit()
     }
     
     func commonInit() {
         setupViews()
-        setupConstraints()
     }
 }
 
 private extension DetailView {
     
     func setupViews() {
-        containerStack.addArrangedSubview(headerLabel)
-        containerStack.addArrangedSubview(detailLabel)
-        addSubview(containerStack)
-    }
-    
-    func setupConstraints() {
+        alignment = .leading
+        distribution = .fill
+        axis = .horizontal
+        spacing = 30
         
-        containerStack.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            containerStack.topAnchor.constraint(equalTo: self.topAnchor),
-            containerStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            containerStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            containerStack.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
+        addArrangedSubview(headerLabel)
+        addArrangedSubview(detailLabel)
     }
     
 }
